@@ -4,6 +4,9 @@ My second project within my coding cohort. This is a random fact generator, full
 ## Description
 Welcome to the Fun Fact Generator! Here's the place where you can get some interesting fun facts that you'll be able to use as great conversation starters whether by the office water cooler, on a date, or even waiting in the doctor's office. Enjoy this endless amount of fun facts and ease of use!
 
+## API
+Here's the base URL for this API: https://api.aakhilv.me
+
 ## User Information
 As a user, I should be able to use this full stack application to:
 1. Receive random facts from database schema
@@ -34,6 +37,9 @@ This will have elements of:
 
 - Favorites 
 ![img](/Wireframe-Imgs/Favorites-Page.png)
+
+- Journal
+![img](/Wireframe-Imgs/Journal-Entry-Page.png)
 
 - Sign Out
 ![img](/Wireframe-Imgs/Signed-Out.png)
