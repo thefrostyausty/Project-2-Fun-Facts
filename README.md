@@ -20,3 +20,23 @@ This will have elements of:
 - Have models
 
 ## WireFrames
+- Home Page
+![img](/Wireframe-Imgs/Home-Page.png)
+
+- Login
+![img](/Wireframe-Imgs/Login.png)
+
+- Sign Up
+![img](/Wireframe-Imgs/Sign-Up.png)
+
+- Fun Facts
+![img](/Wireframe-Imgs/Fun-Fact-Page.png)
+
+- Favorites 
+![img](/Wireframe-Imgs/Favorites-Page.png)
+
+- Sign Out
+![img](/Wireframe-Imgs/Signed-Out.png)
+
+-ERD
+![img](/Wireframe-Imgs/ERD.png)
