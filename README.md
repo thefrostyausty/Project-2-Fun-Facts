@@ -12,8 +12,9 @@ As a user, I should be able to use this full stack application to:
 1. Receive random facts from database schema
 2. Log in/Sign Up in order to have a user profile within the app
 3. Save random facts to profile in order to have them logged within my profile
-4. Delete any favorite facts that are no longer needed. 
-5. The ability to log out and return to the main homepage/Index
+4. Ability to journal/create information that relates to that specific fact.
+5. Delete any favorite facts that are no longer needed. 
+6. The ability to log out and return to the main homepage/Index
 
 ## Requirements
 This will have elements of:
