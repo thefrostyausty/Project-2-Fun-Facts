@@ -44,5 +44,5 @@ This will have elements of:
 - Sign Out
 ![img](/Wireframe-Imgs/Signed-Out.png)
 
--ERD
+- ERD
 ![img](/Wireframe-Imgs/ERD.png)
