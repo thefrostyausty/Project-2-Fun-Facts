@@ -4,7 +4,7 @@
 require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
-const ExampleRouter = require('./controllers/example')
+const FactsRouter = require('./controllers/facts')
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
 // how to call API fetch
@@ -25,7 +25,7 @@ middleware(app)
 ////////////////////
 
 app.use('/auth', UserRouter)
-app.use('/examples', ExampleRouter)
+app.use('/facts', FactsRouter)
 
 app.get('/', (req, res) => {
 	// this is how to make an API fetch

@@ -1,6 +1,6 @@
 // Import Dependencies
 const express = require('express')
-const Facts = require('../models/example.js')
+const Facts = require('../models/facts.js')
 
 // Create router
 const router = express.Router()
@@ -35,13 +35,13 @@ router.get('/new', (req, res) => {
 		})
 })
 
-// index that shows only the user's examples
-router.get('/mine', (req, res) => {
+// index that shows only the user's facts
+router.get('/', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	Facts.find({ owner: userId })
-		.then(examples => {
-			res.render('facts/index', { facts, username, loggedIn })
+		.then(facts => {
+			res.render('favefacts/index', { facts, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -98,11 +98,11 @@ router.put('/:id', (req, res) => {
 
 // show route
 router.get('/:id', (req, res) => {
-	const exampleId = req.params.id
-	Example.findById(exampleId)
-		.then(example => {
+	const factsId = req.params.id
+	Facts.findById(exampleId)
+		.then(facts => {
             const {username, loggedIn, userId} = req.session
-			res.render('examples/show', { example, username, loggedIn, userId })
+			res.render('facts/show', { example, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -111,10 +111,10 @@ router.get('/:id', (req, res) => {
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const exampleId = req.params.id
-	Example.findByIdAndRemove(exampleId)
-		.then(example => {
-			res.redirect('/examples')
+	const factsId = req.params.id
+	Facts.findByIdAndRemove(factsId)
+		.then(facts => {
+			res.redirect('/faves')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)

@@ -1,14 +1,18 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-    <h1 class="display-4 text-center">This is the Random Facts App!</h1>
-    <h2 class="display-7 text-center">Click 'Fun Fact Me!' to get a random fact!</h2>
-    <p>{{ jsonData }} </br></p> 
-    
-    <div class="btn-group btn-group-lg">
-        <a href="/" class="btn btn-success">Fun Fact Me!</a>
-        <a href="/user/signup" class="btn btn-success">Sign Up</a>
-        <a href="/user/login" class="btn btn-success">Login</a>
-    </div>
+<h1 class="display-4 text-center">This is the Random Facts App!</br>
+    <small class="display-6 text-muted">Click 'Fun Fact Me!' to get a random fact!</small>
+</h1>
+
+<div class="btn-group">
+    <p class="">{{ jsonData }} </br></p>
+    <a href="/faves" class="btn btn-success">Favorites</a>
+</div>
+<div class="btn-group btn-group-lg">
+    <a href="/" class="btn btn-success">Fun Fact Me!</a>
+    <a href="/auth/signup" class="btn btn-success">Sign Up</a>
+    <a href="/auth/login" class="btn btn-success">Login</a>
+</div>
 
 {% endblock %}

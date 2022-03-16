@@ -78,7 +78,7 @@ router.post('/login', async (req, res) => {
 			} else {
 				// send an error if the user doesnt exist
 				res.redirect('/error?error=That%20user%20does%20not%20exist')
-			}
+			} 
 		})
 		// catch any other errors that occur
 		.catch((error) => {
