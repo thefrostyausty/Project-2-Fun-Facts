@@ -1,4 +1,8 @@
 {% layout 'layout.liquid'%}
 {% block content %}
-<h1>favorite fact page is working</h1>
+{% for facts in fact %}
+<div class="container">
+    <p>{{ fact.owner }}</p>
+</div> 
+{% endfor %}   
 {% endblock %}

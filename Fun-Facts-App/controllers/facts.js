@@ -22,30 +22,43 @@ router.use((req, res, next) => {
 // Routes
 
 // index ALL
-router.get('/new', (req, res) => {
+router.get('/', (req, res) => {
 	Facts.find({})
 		.then(facts => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			
-			res.render('facts/fun', { facts, username, loggedIn })
+			res.send(facts)
+			// res.render('facts/fun', { facts, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
 
-// index that shows only the user's facts
-router.get('/', (req, res) => {
+// index that shows only the user's fave facts
+router.post('/faves', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	Facts.find({ owner: userId })
-		.then(facts => {
-			res.render('favefacts/index', { facts, username, loggedIn })
+	console.log('req.body from favefact form', req.body)
+	req.body.owner = userId
+	
+	console.log('req.body after owner', req.body)
+	// now using a reference
+	// and since we stored the id of the user in the session object
+	// we can use it to set the owner property
+	// of the facts upon creation
+	req.body.owner = req.session.userId
+	Facts.create(req.body)
+		.then((facts) => {
+			console.log('this is what is coming from create', facts)
+			res.redirect('/')
 		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
+		.catch((error) => {
+			console.log(error)
+			res.send(error)
 		})
+	
+	// res.render('')
 })
 
 // new route -> GET route that renders our page with the form
@@ -56,7 +69,7 @@ router.get('/new', (req, res) => {
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
-	req.body.ready = req.body.ready === 'on' ? true : false
+	// req.body.ready = req.body.ready === 'on' ? true : false
 
 	req.body.owner = req.session.userId
 	Facts.create(req.body)
@@ -97,17 +110,17 @@ router.put('/:id', (req, res) => {
 })
 
 // show route
-router.get('/:id', (req, res) => {
-	const factsId = req.params.id
-	Facts.findById(exampleId)
-		.then(facts => {
-            const {username, loggedIn, userId} = req.session
-			res.render('facts/show', { example, username, loggedIn, userId })
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// router.get('/:id', (req, res) => {
+// 	const factsId = req.params.id
+// 	Facts.findById(exampleId)
+// 		.then(facts => {
+//             const {username, loggedIn, userId} = req.session
+// 			res.render('facts/show', { example, username, loggedIn, userId })
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // delete route
 router.delete('/:id', (req, res) => {

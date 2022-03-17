@@ -10,7 +10,7 @@ const { Schema, model } = mongoose
 const factSchema = new Schema(
 	{
 		
-		body: { type: String, required: true },
+		fact: { type: String, required: true },
         owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
