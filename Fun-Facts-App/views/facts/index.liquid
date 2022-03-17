@@ -1,0 +1,9 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+{% for fact in facts %}
+<div class="container">
+    <p>{{ facts.fact }}</p>
+    <!-- just want to see ANYTHING POPULATE AT THIS POINT -->
+</div> 
+{% endfor %}   
+{% endblock %}

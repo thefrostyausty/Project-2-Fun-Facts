@@ -21,13 +21,13 @@ router.use((req, res, next) => {
 
 // Routes
 
-// index ALL
+// index ALL this is currently sending all the USERS(tt) facts on /facts
 router.get('/', (req, res) => {
 	Facts.find({})
 		.then(facts => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.send(facts)
+			res.render('/index')
 			// res.render('facts/fun', { facts, username, loggedIn })
 		})
 		.catch(error => {
@@ -35,8 +35,25 @@ router.get('/', (req, res) => {
 		})
 })
 
+// creating a GET route for /faves that maybe can render the /favefacts/index page
+
+// router.get('/faves', (req, res) => {
+// 	Facts.find({})
+// 		.then(facts => {
+// 			console.log(facts)
+// 			const username = req.session.username
+// 			const loggedIn = req.session.loggedIn
+// 			res.render('/favefacts/index')
+// 		})
+// 		.catch(error => {
+// 			console.log('this si the error', error)
+// 			res.send(error)
+// 		})
+// })
+
 // index that shows only the user's fave facts
-router.post('/faves', (req, res) => {
+// currently this page does not exist, maybe it needs a GET route for it?
+router.post('/facts/faves', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	console.log('req.body from favefact form', req.body)
