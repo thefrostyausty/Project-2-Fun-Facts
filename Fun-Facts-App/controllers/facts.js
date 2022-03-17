@@ -21,13 +21,18 @@ router.use((req, res, next) => {
 
 // Routes
 
-// index ALL this is currently sending all the USERS(tt) facts on /facts
-router.get('/', (req, res) => {
-	Facts.find({})
+// index ALL this is currently sending all the USERS(tt) facts on /facts 
+// when instead it should be /facts/faves
+router.get('/faves', (req, res) => {
+	// console.log('the route is hit')
+	Facts.find({owner: req.session.userId})
+		.populate('owner')
 		.then(facts => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
-			res.render('/index')
+			// const username = req.session.username
+			// const loggedIn = req.session.loggedIn
+			console.log('this si facts', facts)
+			const { username, userId, loggedIn } = req.session
+			res.render('userfacts/index', {facts: facts, username, userId, loggedIn})
 			// res.render('facts/fun', { facts, username, loggedIn })
 		})
 		.catch(error => {
@@ -53,7 +58,7 @@ router.get('/', (req, res) => {
 
 // index that shows only the user's fave facts
 // currently this page does not exist, maybe it needs a GET route for it?
-router.post('/facts/faves', (req, res) => {
+router.post('/faves', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
 	console.log('req.body from favefact form', req.body)
@@ -68,7 +73,7 @@ router.post('/facts/faves', (req, res) => {
 	Facts.create(req.body)
 		.then((facts) => {
 			console.log('this is what is coming from create', facts)
-			res.redirect('/')
+			res.redirect('/facts/faves')
 		})
 		.catch((error) => {
 			console.log(error)

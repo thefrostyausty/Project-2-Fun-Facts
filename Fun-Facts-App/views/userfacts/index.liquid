@@ -1,8 +1,9 @@
 {% layout 'layout.liquid'%}
 {% block content %}
-{% for fact in facts %}
+{% for factoid in facts %}
 <div class="container">
-    <p>{{ facts.fact }}</p>
+    <p>{{ factoid.fact }}</p>
+    <p>{{ factoid.owner.username }}</p>
     <!-- just want to see ANYTHING POPULATE AT THIS POINT -->
 </div> 
 {% endfor %}   

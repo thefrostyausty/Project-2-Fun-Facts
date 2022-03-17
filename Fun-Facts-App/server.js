@@ -23,9 +23,12 @@ middleware(app)
 ////////////////////
 //    Routes      //
 ////////////////////
-
+// when you get a URL pattern that says /auth I want ypu to use USERROUTER
 app.use('/auth', UserRouter)
+// when you get a URL patter that says /facts I want you to use FACTSROUTER
 app.use('/facts', FactsRouter)
+// anything in server js will be seen as 'local host 3000'
+// no need to even say '/facts'
 
 app.get('/', (req, res) => {
 	// this is how to make an API fetch
