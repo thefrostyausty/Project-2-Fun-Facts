@@ -84,10 +84,10 @@ router.post('/faves', (req, res) => {
 })
 
 // new route -> GET route that renders our page with the form
-router.get('/new', (req, res) => {
-	const { username, userId, loggedIn } = req.session
-	res.render('facts/new', { username, loggedIn })
-})
+// router.get('/new', (req, res) => {
+// 	const { username, userId, loggedIn } = req.session
+// 	res.render('facts/new', { username, loggedIn })
+// })
 
 // create -> POST route that actually calls the db and makes a new document
 router.post('/', (req, res) => {
