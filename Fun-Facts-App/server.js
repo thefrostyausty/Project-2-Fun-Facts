@@ -6,6 +6,7 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const FactsRouter = require('./controllers/facts')
 const UserRouter = require('./controllers/user')
+const JournalRouter = require('./controllers/journals')
 const User = require("./models/user")
 // how to call API fetch
 const fetch = require("node-fetch")
