@@ -6,5 +6,14 @@
     <p>{{ factoid.owner.username }}</p>
     <!-- just want to see ANYTHING POPULATE AT THIS POINT -->
 </div> 
+{% if factoid.owner == userId %}
+        <div class="btn-group">
+
+            <!-- <a href="/facts/faves" class="btn btn-primary">DELETE THIS FACT</a> -->
+            <form action="/facts/{{ factoid.id }}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </div>
+        {% endif %}
 {% endfor %}   
 {% endblock %}

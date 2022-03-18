@@ -148,8 +148,9 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 	const factsId = req.params.id
 	Facts.findByIdAndRemove(factsId)
+	// console.log('this is what returns factsID', factsId)
 		.then(facts => {
-			res.redirect('/faves')
+			res.redirect('/facts/faves')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
