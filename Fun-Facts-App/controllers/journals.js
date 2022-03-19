@@ -3,6 +3,7 @@
 ////////////////////////////////////////////
 const express = require('express')
 const Journal = require('../models/journals')
+const { route } = require('./facts')
 
 ////////////////////////////////////////////
 // Create router
@@ -23,16 +24,17 @@ const router = express.Router()
 
 
 
-router.get('/facts/journals', (req, res) => {
+router.get('/', (req, res) => {
 	// console.log('the route is hit')
 	Journal.find({owner: req.session.userId})
-		.populate('owner')
+		.populate('fact')
 		.then(journals => {
 			// const username = req.session.username
 			// const loggedIn = req.session.loggedIn
-			console.log('this si facts', journals)
+			console.log('this is journals', journals)
+			// console.log('this is facts', facts)
 			const { username, userId, loggedIn } = req.session
-			res.render('userfacts/show', {journal: journal, facts, username, userId, loggedIn})
+			res.render('userfacts/show', {journals: journals, username, userId, loggedIn})
 			// res.render('facts/fun', { facts, username, loggedIn })
 		})
 		.catch(error => {
@@ -40,8 +42,39 @@ router.get('/facts/journals', (req, res) => {
 		})
 })
 
+// new route in order to display all the journals
+router.get('/new', (req, res) => {
+	res.render('journals/new')
+})
 
+// CREATE Route in order to send the journals to the right page
+// journals/new/:factsid
+router.post('/new/:factsId', (req, res) => {
+	// it is attaching an owner to the request body and assigning a value (in this case userId)
+    req.body.owner = req.session.userId
+	req.body.fact = req.params.factsId
+	console.log('this is the req body', req.body)
+	Journal.create(req.body)
+		.then(journals => {
+			console.log('this was returned from journals', journals)
+			res.redirect('/journals')
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
+// Edit Route in order to edit the journal entry that was made
+router.get('/:id/edit', (req, res) => {
+    const journalsId = req.params.factsId
+	Facts.findById(factsId)
+		.then(facts => {
+			res.render('facts/edit', { example })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 
 

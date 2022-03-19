@@ -6,6 +6,7 @@ const User = require('./user')
 const Fact = require('./facts')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
+// FactSchema = mongoose.model('Fact').schema
 
 const journalSchema = new Schema(
 	{

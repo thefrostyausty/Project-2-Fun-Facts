@@ -28,6 +28,8 @@ middleware(app)
 app.use('/auth', UserRouter)
 // when you get a URL patter that says /facts I want you to use FACTSROUTER
 app.use('/facts', FactsRouter)
+// when you get a URL pattern that says /journal I want you to use JOURNALROUTER
+app.use('/journals', JournalRouter)
 // anything in server js will be seen as 'local host 3000'
 // no need to even say '/facts'
 
