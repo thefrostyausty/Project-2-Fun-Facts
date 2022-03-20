@@ -1,3 +1,5 @@
+
+   
 ////////////////////////////////////////////
 // Import Dependencies
 ////////////////////////////////////////////
@@ -27,14 +29,14 @@ const router = express.Router()
 router.get('/', (req, res) => {
 	// console.log('the route is hit')
 	Journal.find({owner: req.session.userId})
-		.populate('fact')
+		.populate(['fact', 'owner'])
 		.then(journals => {
 			// const username = req.session.username
 			// const loggedIn = req.session.loggedIn
 			console.log('this is journals', journals)
 			// console.log('this is facts', facts)
 			const { username, userId, loggedIn } = req.session
-			res.render('userfacts/show', {journals: journals, username, userId, loggedIn})
+			res.render('userfacts/journals', {journals: journals, username, userId, loggedIn})
 			// res.render('facts/fun', { facts, username, loggedIn })
 		})
 		.catch(error => {
@@ -67,18 +69,26 @@ router.post('/new/:factsId', (req, res) => {
 // Edit Route in order to edit the journal entry that was made
 router.get('/:id/edit', (req, res) => {
     const journalsId = req.params.factsId
-	Facts.findById(factsId)
-		.then(facts => {
-			res.render('facts/edit', { example })
+	Journal.findById(factsId)
+		.then(journals => {
+			res.render('journals/edit', { journals: journal })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
-
-
-
-
+// delete router in order to delete the journal entries that was made
+router.delete('/:id', (req, res) => {
+	const journalsId = req.params.id
+	Journal.findByIdAndRemove(journalsId)
+	// console.log('this is what returns factsID', factsId)
+		.then(journals => {
+			res.redirect('/journals')
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 
 

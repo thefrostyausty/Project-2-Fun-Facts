@@ -13,7 +13,7 @@ const journalSchema = new Schema(
 		journal: { type: String, required: true
         },
 		fact: { type: Schema.Types.ObjectId,
-			ref: 'Fact', },
+			ref: 'Facts', },
         owner: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',

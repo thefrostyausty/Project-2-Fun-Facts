@@ -1,0 +1,18 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+{% for journal in journals%}
+    <div class="card mb-4 shadow">
+        <div class="card-body">
+            <p>{{ journal.journal }}</p>
+            <div class="d-flex justify-content-between">
+            <small>Author: {{ journal.owner.username }}</small>
+            {% if journal.owner.id == userId%}
+                <form action="/journals/{{ journal.id }}?_method=DELETE" method="POST">
+                    <input type="submit" value="X">
+                </form>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
