@@ -72,6 +72,7 @@ router.get('/:id/edit', (req, res) => {
 	Journal.findById(journalsId)
 		.then(journals => {
 			res.render('userfacts/journalsedit', { journals: journals })
+			console.log('this is the console log requested', journals)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -81,16 +82,16 @@ router.get('/:id/edit', (req, res) => {
 // update route -> sends a put request to our database
 router.put('/:id', (req, res) => {
 	// get the id
-	const journalsId = req.params.factsId
-	
-	Journal.findByIdAndUpdate(journalsId, req.body, { new: true })
+	const journalsId = req.params.id
+	const journals = req.body
+	Journal.findByIdAndUpdate(journalsId, journals, { new: true })
 	// if successful -> redirect to the journals page
 	// .populate('journal')
 		.then((journals) => {
 			console.log('this is the req.body', req.body)
 			console.log('the updated journals', journals)
 			const { username, userId, loggedIn } = req.session
-			res.redirect(`/journals/${journal.id}`)
+			res.redirect('/journals')
 			// res.redirect(`/journals/${journal.id}`)
 		})
 		// if an error, display that
