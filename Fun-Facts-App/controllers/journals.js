@@ -44,10 +44,10 @@ router.get('/', (req, res) => {
 		})
 })
 
-// new route in order to display all the journals
-router.get('/new', (req, res) => {
-	res.render('journals/new')
-})
+// // new route in order to display all the journals
+// router.get('/new', (req, res) => {
+// 	res.render('journals/new')
+// })
 
 // CREATE Route in order to send the journals to the right page
 // journals/new/:factsid
@@ -68,14 +68,33 @@ router.post('/new/:factsId', (req, res) => {
 
 // Edit Route in order to edit the journal entry that was made
 router.get('/:id/edit', (req, res) => {
-    const journalsId = req.params.factsId
-	Journal.findById(factsId)
+    const journalsId = req.params.id
+	Journal.findById(journalsId)
 		.then(journals => {
-			res.render('journals/edit', { journals: journal })
+			res.render('userfacts/journalsedit', { journals: journals })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
+})
+
+// update route -> sends a put request to our database
+router.put('/:id', (req, res) => {
+	// get the id
+	const journalsId = req.params.factsId
+	
+	Journal.findByIdAndUpdate(journalsId, req.body, { new: true })
+	// if successful -> redirect to the journals page
+	// .populate('journal')
+		.then((journals) => {
+			console.log('this is the req.body', req.body)
+			console.log('the updated journals', journals)
+			const { username, userId, loggedIn } = req.session
+			res.redirect(`/journals/${journal.id}`)
+			// res.redirect(`/journals/${journal.id}`)
+		})
+		// if an error, display that
+		.catch((error) => res.json(error))
 })
 // delete router in order to delete the journal entries that was made
 router.delete('/:id', (req, res) => {

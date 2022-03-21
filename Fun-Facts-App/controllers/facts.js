@@ -117,19 +117,19 @@ router.get('/:id/edit', (req, res) => {
 		})
 })
 
-// update route
-router.put('/:id', (req, res) => {
-	const exampleId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
+// // update route
+// router.put('/:id', (req, res) => {
+// 	const exampleId = req.params.id
+// 	req.body.ready = req.body.ready === 'on' ? true : false
 
-	Example.findByIdAndUpdate(exampleId, req.body, { new: true })
-		.then(example => {
-			res.redirect(`/examples/${example.id}`)
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
+// 	Example.findByIdAndUpdate(exampleId, req.body, { new: true })
+// 		.then(example => {
+// 			res.redirect(`/examples/${example.id}`)
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // show route
 // router.get('/:id', (req, res) => {

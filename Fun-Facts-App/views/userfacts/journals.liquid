@@ -1,12 +1,15 @@
 {% layout 'layout.liquid'%}
 {% block content %}
+<a href="/facts/faves" class="btn btn-primary">Back to my fave facts!</a>
 {% for journal in journals%}
     <div class="card mb-4 shadow">
         <div class="card-body">
-            <p>{{ journal.journal }}</p>
+            <p>Journal Entry: {{ journal.journal }}</p>
             <div class="d-flex justify-content-between">
-            <small>Author: {{ journal.owner.username }}</small>
+            <small>Fave Fact: {{ journal.fact.fact }}</small>
+            <small>Journal Entry Author: {{ journal.owner.username }}</small>
             {% if journal.owner.id == userId%}
+                <a href="/journals/{{ journal.id }}/edit" class="btn btn-primary">Edit</a>
                 <form action="/journals/{{ journal.id }}?_method=DELETE" method="POST">
                     <input type="submit" value="X">
                 </form>
