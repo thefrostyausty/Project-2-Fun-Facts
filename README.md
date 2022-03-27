@@ -26,10 +26,12 @@ This will have elements of:
 - Incoportate API
 - Have models
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+## CRUD Functionality
+*Facts Route*
+| **VERB**| **PATTERN** | **ACTION** | **DESCRIPTION** | **MODEL** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| GET | /Facts | Index | Shows Page with singular Fun Facts | Facts |
+| Paragraph | Text | Text | Text | Text |
 
 
 ## WireFrames
