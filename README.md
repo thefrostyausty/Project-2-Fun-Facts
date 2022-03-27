@@ -27,11 +27,15 @@ This will have elements of:
 - Have models
 
 ## CRUD Functionality
-*Facts Route*
+*Facts and Journals Routes*
 | **VERB**| **PATTERN** | **ACTION** | **DESCRIPTION** | **MODEL** |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| GET | /Facts | Index | Shows Page with singular Fun Facts | Facts |
-| Paragraph | Text | Text | Text | Text |
+| GET | / | Index | Indexes with singular Fun Fact | Facts |
+| GET | /facts/faves | Show | Shows User's fact they've favorited | Facts |
+| DELETE | /:id | Delete | Deletes a User's specific fact they've favorited | Facts |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+
+
 
 
 ## WireFrames
