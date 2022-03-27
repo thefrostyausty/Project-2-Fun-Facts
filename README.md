@@ -45,9 +45,9 @@ This will have elements of:
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | GET | /journals | Index | Shows all users Journal entries | Journals |
 | POST | /journals | Create | Shows User's journaled 'fact' they've favorited | Journals |
-| GET | /:id/edit | Edit | Shows User's fact they've favorited | Journals |
-| PUT | /journals | Update | Shows User's fact they've favorited | Facts |
-| DELETE | /:id | Delete | Shows User's fact they've favorited | Facts |
+| GET | /:id/edit | Edit | Edit your specific journal entry | Journals |
+| PUT | /journals | Update | Shows the users updated Journal entry | Journals |
+| DELETE | /:id | Delete | Deletes the users selected Journal entry | Facts |
 
 
 
