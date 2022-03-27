@@ -8,7 +8,16 @@ Welcome to the Fun Fact Generator! Here's the place where you can get some inter
 Here's the base URL for this API: https://api.aakhilv.me
 
 ### Installation Instructions
-1. 
+1. Fork and Clone this repository
+2. Cd into the `Project-2-Fun-Facts` directory
+3. Run `npm install` to install the dependencies
+4. `Touch .env .gitignore` in the main directory 
+5. Add node_modules and .env into the .gitignore folder.
+6. Check if you have nodemon installed by running `npm install -g nodemon`
+7. Run `nodemon` to start the server
+8. Run 'https://localhost:3000'
+9. Signup or Login to create an account to continue through the app. 
+10. Enjoy and Favorite some Fun Facts! :)
 
 ## User Information
 As a user, you should be able to use this full stack application to:
@@ -30,10 +39,15 @@ This will have elements of:
 *Facts and Journals Routes*
 | **VERB**| **PATTERN** | **ACTION** | **DESCRIPTION** | **MODEL** |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| GET | / | Index | Indexes with singular Fun Fact | Facts |
+| GET | /facts | Index | Indexes with singular Fun Fact | Facts |
 | GET | /facts/faves | Show | Shows User's fact they've favorited | Facts |
 | DELETE | /:id | Delete | Deletes a User's specific fact they've favorited | Facts |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
+| GET | /journals | Index | Shows all users Journal entries | Journals |
+| POST | /journals | Create | Shows User's journaled 'fact' they've favorited | Journals |
+| GET | /:id/edit | Edit | Shows User's fact they've favorited | Journals |
+| PUT | /journals | Update | Shows User's fact they've favorited | Facts |
+| DELETE | /:id | Delete | Shows User's fact they've favorited | Facts |
 
 
 
