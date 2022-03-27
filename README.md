@@ -7,8 +7,11 @@ Welcome to the Fun Fact Generator! Here's the place where you can get some inter
 ## API
 Here's the base URL for this API: https://api.aakhilv.me
 
+### Installation Instructions
+1. 
+
 ## User Information
-As a user, I should be able to use this full stack application to:
+As a user, you should be able to use this full stack application to:
 1. Receive random facts from database schema
 2. Log in/Sign Up in order to have a user profile within the app
 3. Save random facts to profile in order to have them logged within my profile
@@ -22,6 +25,12 @@ This will have elements of:
 - Utilize ODM to create a database table structure with MongoDB data
 - Incoportate API
 - Have models
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
 
 ## WireFrames
 - Home Page
