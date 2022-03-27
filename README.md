@@ -12,7 +12,7 @@ Here's the base URL for this API: https://api.aakhilv.me
 2. Cd into the `Project-2-Fun-Facts` directory
 3. Run `npm install` to install the dependencies
 4. `Touch .env .gitignore` in the main directory 
-5. Add node_modules and .env into the .gitignore folder.
+5. Add `node_modules` and `.env` into the `.gitignore` folder.
 6. Check if you have nodemon installed by running `npm install -g nodemon`
 7. Run `nodemon` to start the server
 8. Run 'https://localhost:3000'
